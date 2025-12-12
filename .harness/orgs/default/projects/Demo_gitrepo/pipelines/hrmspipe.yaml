@@ -1,0 +1,38 @@
+pipeline:
+  name: hrmspipe
+  identifier: hrmspipe
+  projectIdentifier: Demo_gitrepo
+  orgIdentifier: default
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: rrahul
+        repoName: auto-demo-round4
+        build: <+input>
+  stages:
+    - stage:
+        name: Hrmsbuild
+        identifier: Hrmsbuild
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          buildIntelligence:
+            enabled: true
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: Run_1
+                  identifier: Run_1
+                  spec:
+                    shell: Bash
+                    command: mvn clean install
+                  description: bash
